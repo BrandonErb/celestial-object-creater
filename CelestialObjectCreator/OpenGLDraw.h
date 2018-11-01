@@ -1,5 +1,6 @@
 #pragma once
 #include <gl\glut.h>
+#include <gl\GL.h>
 #include <vector>
 #include <windows.h>
 #include "uniformDistribution.h" //Need for struct definition

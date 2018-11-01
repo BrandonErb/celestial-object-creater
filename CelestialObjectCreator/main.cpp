@@ -14,7 +14,7 @@ int main(int argc, char * argv[])
 	UniformDistribution makeBodies;
 	vector<Coords> locations;
 	Coords output;
-	int numBodies = 2;
+	int numBodies = 10;
 	int spaceSize = 100;
 
 	//cout << "Enter number of celestial bodies: ";

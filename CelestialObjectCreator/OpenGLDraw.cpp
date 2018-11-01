@@ -39,8 +39,11 @@ OpenGLDraw::~OpenGLDraw()
 void display() {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
 	glClear(GL_COLOR_BUFFER_BIT);   // Clear the color buffer (background)
+
+	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluLookAt(0.5f, 0.5f, 0.0, 0.0, 0.0f, -100.0, 0.0, 1.0f, 0.0); //Camera Position ****Still Misaligned****
+	gluOrtho2D(0.0, 1.0, 0.0, 1.0);
+	//gluLookAt(0.5f, 0.5f, 0.0, 0.0, 0.0f, -100.0, 0.0, 1.0f, 0.0); //Camera Position ****Still Misaligned****
 
 	// Draw a Red Test Square to see if camera is correctly oriented
 	/*glBegin(GL_QUADS);             
@@ -57,7 +60,7 @@ void display() {
 	{
 		glPushMatrix();
 		glTranslatef(coords[i].x, coords[i].y, coords[i].z);
-		glutSolidSphere(0.01, 10, 10);
+		glutSolidSphere(0.005, 10, 10);
 		glPopMatrix();
 	}
 	//glPointSize(10.0f);

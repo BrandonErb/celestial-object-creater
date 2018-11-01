@@ -37,6 +37,7 @@ std::vector<Coords> UniformDistribution::Create()
 
 	for (int i = 0; i < numBodies; ++i)
 	{
+		bool tooClose = false; //flag for deciding if an object is too close;
 		double x = Random(sizeOfSpace);
 		double y = Random(sizeOfSpace);
 		double z = Random(sizeOfSpace);
@@ -44,24 +45,26 @@ std::vector<Coords> UniformDistribution::Create()
 		
 		if (locations.size() != 0)
 		{
-			for (int j = 1; j <= locations.size(); j++)
+			for (int j = 0; j < locations.size(); ++j)
 			{
+				Coords verifyDistance = locations[j];
 
-				Coords verifyDistance = locations[j -1];
-
-				if (fabs(newBody.x - verifyDistance.x) > spacing && fabs(newBody.y - verifyDistance.y) > spacing && fabs(newBody.z - verifyDistance.z) > spacing)
+				if (fabs(newBody.x - verifyDistance.x) < spacing && fabs(newBody.y - verifyDistance.y) < spacing && fabs(newBody.z - verifyDistance.z) < spacing)
 				{
-					locations.push_back(newBody); 
-					j++;
-				}
-				else
-				{
-					i--; //object was too close to another try inserting another one
-					j++;
+					tooClose = true;
 				}
 			}
+
+			if (tooClose == false)
+			{
+				locations.push_back(newBody);
+			}
+			else
+			{
+				i--; //object was too close to another try inserting another one
+			}
 		}
-		else
+		else //add first entry
 		{
 			locations.push_back(newBody);
 		}		
