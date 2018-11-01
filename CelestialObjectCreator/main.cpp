@@ -11,7 +11,6 @@ using namespace std;
 
 int main(int argc, char * argv[])
 {
-	OpenGLDraw Draw;
 	UniformDistribution makeBodies;
 	vector<Coords> locations;
 	Coords output;
@@ -27,6 +26,7 @@ int main(int argc, char * argv[])
 	makeBodies.sizeOfSpace = spaceSize;
 	locations = makeBodies.Create();
 	
+	OpenGLDraw Draw(locations, spaceSize);
 
 	for (int i = 0; i < locations.size(); i++)
 	{

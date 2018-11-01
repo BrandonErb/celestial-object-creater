@@ -13,7 +13,9 @@ Header for class that adds celestial bodies to a desired size of space, randomly
 //Struct for Coordinates
 struct Coords
 {
-	double x, y, z;
+	double x = 0;
+	double y = 0;
+	double z = 0;
 };
 
 class UniformDistribution
