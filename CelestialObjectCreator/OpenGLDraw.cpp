@@ -63,12 +63,6 @@ void display() {
 		glutSolidSphere(0.005, 10, 10);
 		glPopMatrix();
 	}
-	//glPointSize(10.0f);
-	//glBegin(GL_POINTS);
-	//glColor3f(1.0f, 1.0f, 1.0f);
-	//glVertex2f(0.0f, 0.0f);
-	//glEnd();
-
 
 	glFlush();  // Render now
 }
@@ -78,7 +72,7 @@ void OpenGLDraw::OpenWindow(int argc, char ** argv)
 {
 	glutInit(&argc, argv);                 // Initialize GLUT
 	//glutInitDisplayMode(GLUT_DOUBLE); //Sets double buffering 
-	glutCreateWindow("OpenGL Setup Test"); // Create a window with the given title
+	glutCreateWindow("Celestial Space"); // Create a window with the given title
 	glutInitWindowSize(500, 500);   // Set the window's initial width & height
 	glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
 	glutDisplayFunc(display); // Register display callback handler for window re-paint
