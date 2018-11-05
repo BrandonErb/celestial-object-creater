@@ -42,20 +42,12 @@ void display() {
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluOrtho2D(0.0, 1.0, 0.0, 1.0);
-	//gluLookAt(0.5f, 0.5f, 0.0, 0.0, 0.0f, -100.0, 0.0, 1.0f, 0.0); //Camera Position ****Still Misaligned****
-
-	// Draw a Red Test Square to see if camera is correctly oriented
-	/*glBegin(GL_QUADS);             
-	glColor3f(1.0f, 0.0f, 0.0f); 
-	glVertex2f(-0.5f, -0.5f);   
-	glVertex2f(0.5f, -0.5f);
-	glVertex2f(0.5f, 0.5f);
-	glVertex2f(-0.5f, 0.5f);
-	glEnd();*/
+	//gluOrtho2D(0.0, 1.0, 0.0, 1.0); //For 2D Testing
+	gluLookAt(1.0f, 1.0f, 1.0f, 0.5, 0.5, 0.5, 0.0, 1.0f, 0.0); //Camera Position
+	glScalef(1.25, 1.25, 1.25); //Zoom Camera
 	 
 	//Draw Sphere
-	glColor3f(1.0f, 1.0f, 1.0f);
+	glColor3f(0.6f, 1.0f, 0.9f);
 	for (int i = 0; i < coords.size(); i++ )
 	{
 		glPushMatrix();
@@ -63,6 +55,24 @@ void display() {
 		glutSolidSphere(0.005, 10, 10);
 		glPopMatrix();
 	}
+
+	//Scale lines
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glLineWidth(0.5);
+	glBegin(GL_LINES);
+	glVertex3f(0.25f, 0.5f, 0.5f);
+	glVertex3f(0.75f, 0.5f, 0.5f);
+	glEnd();
+
+	glBegin(GL_LINES);
+	glVertex3f(0.5f, 0.25f, 0.5f);
+	glVertex3f(0.5f, 0.75f, 0.5f);
+	glEnd();
+
+	glBegin(GL_LINES);
+	glVertex3f(0.5f, 0.5f, 0.25f);
+	glVertex3f(0.5f, 0.5f, 0.75f);
+	glEnd();
 
 	glFlush();  // Render now
 }
@@ -72,8 +82,8 @@ void OpenGLDraw::OpenWindow(int argc, char ** argv)
 {
 	glutInit(&argc, argv);                 // Initialize GLUT
 	//glutInitDisplayMode(GLUT_DOUBLE); //Sets double buffering 
+	glutInitWindowSize(600, 600);   // Set the window size
 	glutCreateWindow("Celestial Space"); // Create a window with the given title
-	glutInitWindowSize(500, 500);   // Set the window's initial width & height
 	glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
 	glutDisplayFunc(display); // Register display callback handler for window re-paint
 	glutMainLoop();           // Enter the event-processing loop

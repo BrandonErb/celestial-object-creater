@@ -28,9 +28,9 @@ int main(int argc, char * argv[])
 	makeBodies.sizeOfSpace = spaceSize;
 	locations = makeBodies.Create();
 
-	//cluster.numBodies = numBodies;
-	//cluster.sizeOfSpace = spaceSize;
-	//locations = cluster.Create();
+	/*cluster.numBodies = numBodies;
+	cluster.sizeOfSpace = spaceSize;
+	locations = cluster.Create();*/
 
 	OpenGLDraw Draw(locations, spaceSize);
 

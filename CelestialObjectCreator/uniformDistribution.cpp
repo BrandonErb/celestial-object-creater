@@ -45,6 +45,7 @@ std::vector<Coords> UniformDistribution::Create()
 		
 		if (locations.size() != 0)
 		{
+			//Verifying if object is not on top of another
 			for (int j = 0; j < locations.size(); ++j)
 			{
 				Coords verifyDistance = locations[j];

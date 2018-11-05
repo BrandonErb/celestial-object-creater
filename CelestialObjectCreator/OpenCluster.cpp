@@ -19,6 +19,7 @@ OpenCluster::~OpenCluster()
 std::vector<Coords> OpenCluster::Create()
 {
 	vector<Coords> locations;
+	double bindingDistance = bindingConst * sizeOfSpace;
 
 	time_t currentTime = time(NULL);
 	time_t currentDay = time(0);
@@ -27,15 +28,17 @@ std::vector<Coords> OpenCluster::Create()
 	startOfDay = ((now->tm_hour * 60) + (now->tm_min * 60)) + now->tm_sec; //seconds in a day 86400
 	srand(startOfDay); //seeding expected to be repeated daily
 
+
+
 	for (int i = 1; locations.size() < numBodies; i++)
 	{
 		if (locations.size() != 0)
 		{
 			bool tooClose = false; //flag for deciding if an object is too close;
 			int index = 0;
-			double x = Random(binding * 2) - binding;
-			double y = Random(binding * 2) - binding;
-			double z = Random(binding * 2) - binding;
+			double x = Random(bindingDistance * 2) - bindingDistance;
+			double y = Random(bindingDistance * 2) - bindingDistance;
+			double z = Random(bindingDistance * 2) - bindingDistance;
 			Coords displacement = { x,y,z };
 
 			//Check if object is inside the boundries
@@ -48,7 +51,7 @@ std::vector<Coords> OpenCluster::Create()
 					break;
 				}
 
-			} while (0);
+			} while (1);
 
 			Coords newBody = { locations[index].x + displacement.x, locations[index].y + displacement.y, locations[index].z + displacement.z };
 

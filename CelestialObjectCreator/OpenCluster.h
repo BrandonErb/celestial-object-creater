@@ -18,7 +18,7 @@ public:
 	int numBodies;
 	int sizeOfSpace;
 	const double spacing = 0.8;
-	const double binding = 8;
+	const double bindingConst = 0.2; //distance that objects are bound to the group
 
 	OpenCluster();
 	~OpenCluster();
