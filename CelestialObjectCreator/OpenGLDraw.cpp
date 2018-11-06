@@ -47,7 +47,7 @@ void display() {
 	glScalef(1.25, 1.25, 1.25); //Zoom Camera
 	 
 	//Draw Sphere
-	glColor3f(0.6f, 1.0f, 0.9f);
+	glColor3f(0.6f, 1.0f, 0.7f);
 	for (int i = 0; i < coords.size(); i++ )
 	{
 		glPushMatrix();

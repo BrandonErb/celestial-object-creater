@@ -8,6 +8,7 @@ Description: Application that populates objects in a 3 dimensional space
 #include "OpenCluster.h"
 #include "OpenGLDraw.h"
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main(int argc, char * argv[])
@@ -16,21 +17,32 @@ int main(int argc, char * argv[])
 	OpenCluster cluster;
 	vector<Coords> locations;
 	Coords output;
-	int numBodies = 100;
-	int spaceSize = 100;
+	int numBodies = 100; //test number
+	int spaceSize = 100; //test number
+	char type;
 
-	//cout << "Enter number of celestial bodies: ";
-	//cin >> numBodies;
-	//cout << "Enter the size of space in light years: ";
-	//cin >> spaceSize;
+	cout << "Enter number of celestial bodies: ";
+	cin >> numBodies;
+	cout << "Enter the size of space in light years: ";
+	cin >> spaceSize;
+	cout << "Enter the type of distribution (u)niform or (c)lustered: ";
+	cin >> type;
 
-	makeBodies.numBodies = numBodies;
-	makeBodies.sizeOfSpace = spaceSize;
-	locations = makeBodies.Create();
-
-	/*cluster.numBodies = numBodies;
-	cluster.sizeOfSpace = spaceSize;
-	locations = cluster.Create();*/
+	switch (type) {
+		case 'u':
+			makeBodies.numBodies = numBodies;
+			makeBodies.sizeOfSpace = spaceSize;
+			locations = makeBodies.Create();
+			break;
+		case 'c':
+			cluster.numBodies = numBodies;
+			cluster.sizeOfSpace = spaceSize;
+			locations = cluster.Create();
+			break;
+		default:
+			cout << "Invalid input";
+			return 1;
+	}
 
 	OpenGLDraw Draw(locations, spaceSize);
 
